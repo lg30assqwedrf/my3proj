@@ -1,44 +1,53 @@
 import React from 'react';
-import { StyleSheet, Image} from 'react-native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { StyleSheet, Text, View, FlatList, Button, Image, iconPath } from 'react-native';
+
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
+
 import bookData from "./json/booklist.json";
 import { navigationRef } from './RootNavigation';
 import BookScreen from './screens/BookScreen';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import DrawerScreen from './screens/DrawerScreen';
 
-function MeScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button
-        onPress={() => navigation.navigate('Notifications')}
-        title="Go to notifications"
-      />
-    </View>
-  );
-}
-
-function SettingsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button onPress={() => navigation.goBack()} title="Go back home" />
-    </View>
-  );
-}
-
+import {   
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem, } 
+  from '@react-navigation/drawer';
+import { Tile } from 'react-native-elements';
 const Drawer = createDrawerNavigator();
 
 const Stack = createStackNavigator();
+const aboutScreen = () =>{
+  
+  
+}
+
+const SettingScreen = () =>{
+  
+  
+}
+
+const FavScreen = () =>{
+  
+}
+const HomeScreen = () =>{
+  
+  
+}
+
 
 const AlbumStack = () => {
   return (
-    <NavigationContainer ref={navigationRef}> 
+    
      
     <Stack.Navigator>
    
-      <Drawer.Screen name="Home" component={BookScreen}
+      <Stack.Screen name="Home" component={BookScreen}
       options={{
         title: bookData.bookTitle,
         headerStyle:{ backgroundColor:'#00b49f',
@@ -80,7 +89,7 @@ const AlbumStack = () => {
         ),
       }}
     />
-       <Drawer.Screen 
+       <Stack.Screen 
      name="Draw" 
       component={DrawerScreen} 
       options={{
@@ -124,23 +133,53 @@ const AlbumStack = () => {
       }}
      
        />
-      <Drawer.Screen name="My book" component={BookScreen} />
+     
       
       </Stack.Navigator>
    
     
-  </NavigationContainer>
+
   );
 }
+const CustomDrawerContent = ({ ...rest }) => {
+  return (
+    <DrawerContentScrollView style={{marginTop:-48}} {...rest} >
+  <View style={{height:168,width:320,backgroundColor:'#00b49f'}}>
+      <Image
+        source={require('./img/img_user_photo.png')}
+        style={{width:70,height:70,marginTop:37,marginLeft:13}}
+        featured
+      />
 
+        </View>
+      <DrawerItemList {...rest} />
+    </DrawerContentScrollView>
+  
+  );
+}
 const App = () => {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator>
-        <Drawer.Screen name="Album" component={AlbumStack} />
-       
+    <NavigationContainer ref={navigationRef}> 
+    
+    <Drawer.Navigator 
+     drawerStyle={{ width: 320,}}
+     drawerContentOptions={{
+       activeBackgroundColor: '#00b49f',
+       activeTintColor:'#fff',
+       itemStyle: { marginLeft: 0, marginRight: 0 },
+       labelStyle: { fontSize: 20 },
+     }}
+     drawerContent={props => <CustomDrawerContent {...props} />}
+     >
+          <Drawer.Screen name="Home" component={AlbumStack} />
+          <Drawer.Screen name="My book" component={HomeScreen} />
+          <Drawer.Screen name="Favorites" component={FavScreen} />
+          <Drawer.Screen name="Settings" component={SettingScreen} />
+          <Drawer.Screen name="about us" component={aboutScreen} />
       </Drawer.Navigator>
+
     </NavigationContainer>
+    
   );
 }
 

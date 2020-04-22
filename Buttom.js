@@ -54,29 +54,29 @@ const styles = StyleSheet.create({
     back:{
         backgroundColor:'#ffffff',
        width:140,
-       height:96
+       height:104
     },
     statuspic:{
         
-        width:56,
-        height:56,
-        marginTop:6,
-        marginLeft:48
+        width:54,
+        height:54,
+        marginTop:12,
+        marginLeft:23
     },
     home:{
         color:'#818181',
         fontSize:18,
-        marginLeft:52
+        marginLeft:27
     },
     mybook:{
         color:'#818181',
         fontSize:18,
-        marginLeft:42
+        marginLeft:18
     },
     favorite:{
         color:'#818181',
         fontSize:18,
-        marginLeft:42
+        marginLeft:13
     }
 
     
