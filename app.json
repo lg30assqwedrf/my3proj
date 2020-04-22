@@ -1,7 +1,9 @@
 {
   "expo": {
-    "name": "my3proj",
-    "slug": "my3proj",
+    "name": "Blank Template",
+    "slug": "wkbook",
+    "privacy": "public",
+    "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
       "android",
