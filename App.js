@@ -8,8 +8,8 @@ import { navigationRef } from './RootNavigation';
 import BookScreen from './screens/BookScreen';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import DrawerScreen from './screens/DrawerScreen';
-
-
+import MeScreen from './screens/MeScreen';
+import SettingsScreen from './screens/SettingsScreen';
 
 
 
@@ -17,9 +17,8 @@ const Drawer = createDrawerNavigator();
 
 const Stack = createStackNavigator();
 
-const App = () => {
+const AlbumStack = () => {
   return (
-    
     <NavigationContainer ref={navigationRef}> 
      
     <Stack.Navigator>
@@ -116,10 +115,19 @@ const App = () => {
    
     
   </NavigationContainer>
-  
-  
   );
-};
+}
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator>
+        <Drawer.Screen name="Album" component={AlbumStack} />
+       
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
+}
 
 const styles = StyleSheet.create({
   
