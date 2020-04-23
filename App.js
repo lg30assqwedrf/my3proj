@@ -20,10 +20,12 @@ const Stack = createStackNavigator();
 const aboutScreen = () =>{
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button
-        onPress={() => navigation.navigate('Notifications')}
-        title="about us"
-      />
+      <Text style={{       
+        fontSize:16,
+        marginLeft:28,
+        marginTop:-45,
+        color:"#000000",
+        fontWeight:"500"}}>about us</Text>
     </View>
   );
   
@@ -32,10 +34,12 @@ const aboutScreen = () =>{
 const SettingScreen = () =>{
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button
-        onPress={() => navigation.navigate('Notifications')}
-        title="setting"
-      />
+      <Text style={{       
+        fontSize:16,
+        marginLeft:28,
+        marginTop:-45,
+        color:"#000000",
+        fontWeight:"500"}}>settings</Text>
     </View>
   );
   
@@ -44,10 +48,12 @@ const SettingScreen = () =>{
 const FavScreen = () =>{
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button
-        onPress={() => navigation.navigate('Notifications')}
-        title="favorite"
-      />
+      <Text style={{       
+        fontSize:16,
+        marginLeft:28,
+        marginTop:-45,
+        color:"#000000",
+        fontWeight:"500"}}>Favorites</Text>
     </View>
   );
 }
@@ -155,11 +161,13 @@ const AlbumStack = () => {
 const HomeScreen = () =>{
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button
-        onPress={() => navigation.navigate('Notifications')}
-        title="home"
-      />
-    </View>
+    <Text style={{       
+      fontSize:16,
+      marginLeft:28,
+      marginTop:-45,
+      color:"#000000",
+      fontWeight:"500"}}>Home</Text>
+  </View>
   );
   
 }
