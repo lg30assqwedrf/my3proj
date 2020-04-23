@@ -20,27 +20,42 @@ import {
   from '@react-navigation/drawer';
 import { Tile } from 'react-native-elements';
 const Drawer = createDrawerNavigator();
-
 const Stack = createStackNavigator();
+
 const aboutScreen = () =>{
-  
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button
+        onPress={() => navigation.navigate('Notifications')}
+        title="about us"
+      />
+    </View>
+  );
   
 }
 
 const SettingScreen = () =>{
-  
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button
+        onPress={() => navigation.navigate('Notifications')}
+        title="setting"
+      />
+    </View>
+  );
   
 }
 
 const FavScreen = () =>{
-  
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button
+        onPress={() => navigation.navigate('Notifications')}
+        title="favorite"
+      />
+    </View>
+  );
 }
-const HomeScreen = () =>{
-  
-  
-}
-
-
 const AlbumStack = () => {
   return (
     
@@ -141,20 +156,67 @@ const AlbumStack = () => {
 
   );
 }
+
+const HomeScreen = () =>{
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button
+        onPress={() => navigation.navigate('Notifications')}
+        title="home"
+      />
+    </View>
+  );
+  
+}
+
+
+
 const CustomDrawerContent = ({ ...rest }) => {
   return (
-    <DrawerContentScrollView style={{marginTop:-48}} {...rest} >
-  <View style={{height:168,width:320,backgroundColor:'#00b49f'}}>
-      <Image
-        source={require('./img/img_user_photo.png')}
-        style={{width:70,height:70,marginTop:37,marginLeft:13}}
+    <DrawerContentScrollView style={{marginTop: -48,}} {...rest}>
+      <View style={{flexDirection:"row"}}>
+        <View>
+      <Tile
+        imageSrc={{ uri: "https://cdn.zeplin.io/5e6edfd117dbf813ddad315b/assets/1F767D0E-8782-4DBA-B332-72CEAE9CCEE8.png"}}
+        imageContainerStyle={{height:90, width:90, }}
+        containerStyle={{
+          width:300,
+          height:240,
+          paddingLeft:20,
+          paddingTop:70,
+          backgroundColor:"#00b49f",
+        }}
         featured
       />
+      <View>
+      <Text style={{         
+        fontSize:14,
+        marginLeft:28,
+        marginTop:-35,
+        color:"#ffffff", }}>gdlab2017@gmail.com</Text>
+        <Text style={{       
+        fontSize:16,
+        marginLeft:28,
+        marginTop:-45,
+        color:"#ffffff",
+        fontWeight:"500"}}>GamexHCl</Text>
+          </View>
+         </View>
 
-        </View>
+      <View style={{height:240,width:48,backgroundColor:"#00b49f"}}>
+        <Image 
+                  source={{
+                      uri: "https://cdn.zeplin.io/5e6edfd117dbf813ddad315b/assets/076B92EC-4D67-4177-8360-D8BD5F7FA132.svg"
+                  }}
+                  style={{        
+                    width:33,
+                    height:33,
+                    marginTop:180,}}
+                  />
+      </View>
+      </View>
       <DrawerItemList {...rest} />
     </DrawerContentScrollView>
-  
   );
 }
 const App = () => {
@@ -162,20 +224,85 @@ const App = () => {
     <NavigationContainer ref={navigationRef}> 
     
     <Drawer.Navigator 
-     drawerStyle={{ width: 320,}}
-     drawerContentOptions={{
-       activeBackgroundColor: '#00b49f',
-       activeTintColor:'#fff',
-       itemStyle: { marginLeft: 0, marginRight: 0 },
-       labelStyle: { fontSize: 20 },
-     }}
-     drawerContent={props => <CustomDrawerContent {...props} />}
-     >
-          <Drawer.Screen name="Home" component={AlbumStack} />
-          <Drawer.Screen name="My book" component={HomeScreen} />
-          <Drawer.Screen name="Favorites" component={FavScreen} />
-          <Drawer.Screen name="Settings" component={SettingScreen} />
-          <Drawer.Screen name="about us" component={aboutScreen} />
+      drawerStyle={{ width: 348,}}
+      drawerContentOptions={{
+        activeBackgroundColor: '#00b49f',
+        activeTintColor:'#fff',
+        itemStyle: { marginLeft: 0, marginRight: 0 },
+        labelStyle: { fontSize: 18 },
+      }}
+      drawerContent={props => <CustomDrawerContent {...props} />}
+    >
+      <Drawer.Screen 
+        name="Home" 
+        component={HomeScreen} 
+        options={
+          {
+            drawerIcon: ({ tintColor }) => (
+              <Image 
+              source={require("./img/icon_bottomnav_home.png")}
+              style={{ width:35, height:35, marginLeft:25, marginTop:10,  marginBottom:12,}}
+              />
+            ),            
+          }
+        }
+        />
+      <Drawer.Screen 
+        name="My Book" 
+        component={AlbumStack} 
+        options={
+          {
+            drawerIcon: ({ tintColor }) => (
+              <Image
+                source={require("./img/icon_bottomnav_mybook.png")}
+                style={{width:35, height:35, marginLeft:25, marginTop:10,  marginBottom:12,tintColor:tintColor}}
+              />
+            ),            
+          }
+        }
+      />    
+      <Drawer.Screen 
+        name="Favorites" 
+        component={FavScreen} 
+        options={
+          {
+            drawerIcon: ({ tintColor }) => (
+              <Image
+              source={require("./img/icon_bottomnav_favorites.png")}
+                style={{width:35, height:35, marginLeft:25, marginTop:10,  marginBottom:12,}}
+              />
+            ),            
+          }
+        }
+      />  
+       <Drawer.Screen 
+        name="Settings" 
+        component={SettingScreen} 
+        options={
+          {
+            drawerIcon: ({ tintColor }) => (
+              <Image
+              source={require("./img/icon_drawer_setting.png")}
+                style={{width:35, height:35, marginLeft:25, marginTop:10, marginBottom:12,}}
+              />
+            ),            
+          }
+        }
+      />  
+               <Drawer.Screen 
+        name="About us" 
+        component={aboutScreen} 
+        options={
+          {
+            drawerIcon: ({ tintColor }) => (
+              <Image
+              source={require("./img/icon_drawer_aboutus.png")}
+                style={{width:35, height:35, marginLeft:25, marginTop:10, marginBottom:12,}}
+              />
+            ),            
+          }
+        }
+      /> 
       </Drawer.Navigator>
 
     </NavigationContainer>
