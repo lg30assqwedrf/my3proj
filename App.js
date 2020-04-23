@@ -1,17 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, Button, Image, iconPath } from 'react-native';
-
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
-
 import bookData from "./json/booklist.json";
 import { navigationRef } from './RootNavigation';
 import BookScreen from './screens/BookScreen';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import DrawerScreen from './screens/DrawerScreen';
-
 import {   
   createDrawerNavigator,
   DrawerContentScrollView,
